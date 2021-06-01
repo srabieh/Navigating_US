@@ -1,0 +1,269 @@
+<!-- necessary for initialization-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Sam, Quinn, and Sam's Final Project</title>
+   <link rel="stylesheet" href="main.css">
+   <style type="text/css"> </style>
+ </head>
+ <!-- this is an HTML comment — this section initializes the webpage text,
+      the image, the formatting, and stores multiple choice data based on user input-->
+ <body>
+   <h1 id='title'>Sam, Quinn, and Sam's Project</h1>
+   <img src="https://www.bbns.org/uploaded/images/Athletics/US_Athletics_500.jpg">
+   <form onsubmit="return results();" method = 'post'>
+   <input type='text' id='name' name='name'>
+   <section id='starting-room'>
+     <h3>Please choose the Location of your first class</h3>
+     <input type='radio' id='start-one' name='start' value='Renaissance Hall - first floor' required>
+     <label for='start-one'>Renaissance Hall - first floor</label><br>
+     <input type='radio' id='start-two' name='start' value='Renaissance Hall - second floor'>
+     <label for='start-two'>Renaissance Hall - second floor</label><br>
+     <input type='radio' id='start-three' name='start' value='Library'>
+     <label for='start-three'>Library</label><br>
+     <input type='radio' id='start-four' name='start' value='Drama Room'>
+     <label for='start-four'>Drama Room</label><br>
+     <input type='radio' id='start-five' name='start' value='Science Wing - first floor'>
+     <label for='start-five'>Science Wing - first floor</label><br>
+     <input type='radio' id='start-six' name='start' value='Science Wing - second floor'>
+     <label for='start-six'>Science Wing - second floor</label><br>
+   </section>
+   <section id='ending-room'>
+     <h3>Please choose the Location of your second class</h3>
+     <input type='radio' id='end-one' name='end' value='Renaissance Hall - first floor' required>
+     <label for='end-one'>Renaissance Hall - first floor</label><br>
+     <input type='radio' id='end-two' name='end' value='Renaissance Hall - second floor'>
+     <label for='end-two'>Renaissance Hall - second floor</label><br>
+     <input type='radio' id='end-three' name='end' value='Library'>
+     <label for='end-three'>Library</label><br>
+     <input type='radio' id='end-four' name='end' value='Drama Room'>
+     <label for='end-four'>Drama Room</label><br>
+     <input type='radio' id='end-five' name='end' value='Science Wing - first floor'>
+     <label for='end-five'>Science Wing - first floor</label><br>
+     <input type='radio' id='end-six' name='end' value='Science Wing - second floor'>
+     <label for='end-six'>Science Wing - second floor</label><br>
+ </section>
+ <br>
+ <section id='submission'>
+   <input type='submit' class="btn" value='submit'>
+ </section>
+</form>
+
+<p id = 'print'></p>
+
+
+<script>
+   //now for the javascript
+ function results() {
+ var name = document.getElementById('name').value;
+ 
+ //declares variables based on the user input from multiple choice
+ let pollOne;
+ if(document.getElementById('start-one').checked){
+    pollOne = document.getElementById('start-one').value;
+ }
+ else if(document.getElementById('start-two').checked){
+    pollOne = document.getElementById('start-two').value;
+ }
+ else if(document.getElementById('start-three').checked){
+    pollOne = document.getElementById('start-three').value;
+ }
+ else if(document.getElementById('start-four').checked){
+    pollOne = document.getElementById('start-four').value;
+ }
+ else if(document.getElementById('start-five').checked){
+    pollOne = document.getElementById('start-five').value;
+ }
+ else{
+    pollOne = document.getElementById('start-six').value;
+ }
+ let pollTwo;
+ if(document.getElementById('end-one').checked){
+    pollTwo = document.getElementById('end-one').value;
+ }
+ else if(document.getElementById('end-two').checked){
+    pollTwo = document.getElementById('end-two').value;
+ }
+ else if(document.getElementById('end-three').checked){
+    pollTwo = document.getElementById('end-three').value;
+ }
+ else if(document.getElementById('end-four').checked){
+    pollTwo = document.getElementById('end-four').value;
+ }
+ else if(document.getElementById('end-five').checked){
+    pollTwo = document.getElementById('end-five').value;
+ }
+ else{
+    pollTwo = document.getElementById('end-six').value;
+ }
+
+ 
+
+ //printing for user
+ document.write('Starting Room: ' + pollOne + '<br> Ending Room: ' + pollTwo + '<br>');
+ document.write(name + ', these are the directions to your class:' + '<br>');
+
+
+ //outer if statement that chooses which inner if statement to proceed to
+ //based on the first room from user input
+switch(pollOne)
+{
+   case 'Renaissance Hall - first floor':
+      //each case in the inner switch after the outer case chooses
+      //the actual directions to print, because that is how computer
+      //detects both initial location and destination
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - second floor':
+         document.write('Proceed through Renaissance through the Commons and the lobby. Go up the stairs in the lobby. Proceed down the hallway past the theater and freshman center to renaissance.')
+         break;
+      case 'Library':
+         document.write('Proceed through Renaissance until you reach the Internet Cafe bathrooms. Take a right and enter the first-floor science wing. Go up the stairs that lead to the drama room. Cross through the drama room then enter the library through the side door.')
+         break;
+      case 'Drama Room':
+         document.write('Proceed through Renaissance until you reach the Internet Cafe bathrooms. Take a right and enter the first-floor science wing. Go up the stairs that lead to the drama room. Enter the drama room.')
+         break;
+      case 'Science Wing - first floor':
+         document.write('Proceed through Renaissance. Take a right into the science wing.')
+         break;
+      case 'Science Wing - second floor':
+         document.write('Proceed through Renaissance. Take a right into the science wing. Proceed down the hall and up the back staircase leading to the drama room. Proceed down the hallway to your class.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   case 'Renaissance Hall - second floor':
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - first floor':
+         document.write('Proceed down the hallway and down the Renaissance stairwell. Proceed down the hallway to your class.')
+         break;
+      case 'Library':
+         document.write('Proceed down the hallway and down the Renaissance stairwell. Proceed through the first-floor Renaissance hallway until you reach the Internet Cafe bathrooms. Take a right and enter the first-floor science wing. Go up the stairs that lead to the drama room. Cross through the drama room then enter the library through the side door.')
+         break;
+      case 'Drama Room':
+         document.write('Proceed down the hallway and down the Renaissance stairwell. Proceed through the first-floor Renaissance hallway until you reach the Internet Cafe bathrooms. Take a right and enter the first-floor science wing. Go up the stairs that lead to the drama room. Enter the drama room.')
+         break;
+      case 'Science Wing - first floor':
+         document.write('Proceed down the hallway and down the Renaissance stairwell. Proceed down the hallway and take a right into the science wing.')
+         break;
+      case 'Science Wing - second floor':
+         document.write('Proceed down the hallway and down the Renaissance stairwell. Proceed down the hallway and take a right into the science wing. Proceed down the hall and up the back staircase that leads to the drama room. Proceed down the hallway to your class.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   case 'Library':
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - first floor':
+         document.write('Proceed down the hallway towards Renaissance. Go down the renaissance staircase and proceed towards your class.')
+         break;
+         case 'Renaissance Hall - second floor':
+         document.write('Proceed down the hallway towards Renaissance. Enter your classroom.')
+         break;
+      case 'Drama Room':
+         document.write('Exit the library and take a right. Enter the drama room.')
+         break;
+      case 'Science Wing - first floor':
+         document.write('Proceed down the hallway and go down the middle staircase. Go straight into the science wing.')
+         break;
+      case 'Science Wing - second floor':
+         document.write('Proceed down the hallway and go down the middle staircase. Go straight into the science wing. Proceed down the hallway and up the back staircase. Proceed down the hallway to your class.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   case 'Drama Room':
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - first floor':
+         document.write('Proceed down the hallway towards Renaissance. Go down the renaissance staircase and proceed towards your class.')
+         break;
+         case 'Renaissance Hall - second floor':
+         document.write('Proceed down the hallway towards Renaissance. Enter your classroom.')
+         break;
+      case 'Library':
+         document.write('Exit the drama room. Take a right and enter the side door to the library.')
+         break;
+      case 'Science Wing - first floor':
+         document.write('Proceed down the hallway towards Renaissance. Go down the middle staircase and go straight into the science wing.')
+         break;
+      case 'Science Wing - second floor':
+         document.write('Exit the drama room from the back and proceed down the hallway to your class.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   case 'Science Wing - first floor':
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - first floor':
+         document.write('Proceed down the hallway and up the back staircase. Go down the hallways towards Renaissance and go down the Renaissance staircase. Proceed to your classroom.')
+         break;
+         case 'Renaissance Hall - second floor':
+         document.write('Proceed down the hallway and up the back staircase. Go down the hallways towards Renaissance and enter your classroom.')
+         break;
+      case 'Library':
+         document.write('Proceed down the hallway through the commons and into the lobby. Go up the lobby staircase and enter the library.')
+         break;
+      case 'Drama Room':
+         document.write('Proceed down the hallway and up the back staircase. Enter the drama room from the back.')
+         break;
+      case 'Science Wing - second floor':
+         document.write('Proceed down the hallway and up the back staircase. Go down the hallway to your class.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   case 'Science Wing - second floor':
+   switch (pollTwo)
+   {
+      case 'Renaissance Hall - first floor':
+         document.write('Exit the science wing towards Renaissance and go down the Renaissance staircase. Proceed to your classroom.')
+         break;
+         case 'Renaissance Hall - second floor':
+         document.write('Exit the science wing towards Renaissance. Enter your classroom.')
+         break;
+      case 'Library':
+         document.write('Exit the science wing towards Renaissance and go down the middle staircase. Proceed down the hallway into the lobby. Go up the lobby staircase and enter the library.')
+         break;
+      case 'Drama Room':
+         document.write('Exit the science wing and go down the science wing staircase. Proceed down the hallway into the lobby. Go up the lobby staircase and enter the drama room.')
+         break;
+      case 'Science Wing - first floor':
+         document.write('Exit your classroom and go down the science wing staircase. Enter your classroom.')
+         break;
+      default:
+         document.write('Your two classes are in the same place.  Congratulations, you do not have to move!')
+   }
+   break;
+
+   default:
+      document.write('Sorry, your first room was not found in our database.')
+      break;
+
+}
+
+
+document.write('<br>Have a nice day, ' + name + '!')
+
+ }
+</script>
+
+
+   <br>
+
+  </body>
+</html>
